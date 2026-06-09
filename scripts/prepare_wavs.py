@@ -203,18 +203,18 @@ if __name__ == "__main__":
     ## reset intervals relative to 0
     ## get interval durations from original timestamps
     if args.closure_start is not None:
-        dataset['vot_dur'] = dataset[args.phone_end] - dataset[args.phone_start]
-        dataset['closure_dur'] = dataset[args.phone_start] - dataset[args.closure_start]
+        dataset.loc[:,'vot_dur'] = dataset[args.phone_end] - dataset[args.phone_start]
+        dataset.loc[:,'closure_dur'] = dataset[args.phone_start] - dataset[args.closure_start]
 
         ## set these relative to the clip length
-        dataset['closure_start'] = window_df['left_window'].values
-        dataset['vot_start'] = dataset['closure_start'] + dataset['closure_dur']
-        dataset['vot_end'] = dataset['vot_start'] + dataset['vot_dur']
+        dataset.loc[:,'closure_start'] = window_df['left_window'].values
+        dataset.loc[:,'vot_start'] = dataset['closure_start'] + dataset['closure_dur']
+        dataset.loc[:,'vot_end'] = dataset['vot_start'] + dataset['vot_dur']
 
     else:
-        dataset['vot_dur'] = dataset[args.phone_end] - dataset[args.phone_start]
-        dataset['vot_start'] = window_df['left_window'].values
-        dataset['vot_end'] = dataset['vot_start'] + dataset['vot_dur']
+        dataset.loc[:,'vot_dur'] = dataset[args.phone_end] - dataset[args.phone_start]
+        dataset.loc[:,'vot_start'] = window_df['left_window'].values
+        dataset.loc[:,'vot_end'] = dataset['vot_start'] + dataset['vot_dur']
 
     ## make reference CSV of ID labels and the training labels (if supplied)
     if args.closure_start is not None:
