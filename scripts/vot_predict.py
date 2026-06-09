@@ -6,6 +6,7 @@ import soundfile
 import numpy as np
 
 from argparse import ArgumentParser
+from itertools import repeat
 from pandas import DataFrame
 from pathlib import Path
 from multiprocessing import Pool
@@ -18,7 +19,7 @@ from model.data import Wav2VOTPredictionDataset
 from torch.utils.data import DataLoader
 from torch.nn.utils.rnn import pad_sequence
 
-def write_predictions(batch):
+def write_predictions(batch, min_frame_length, save_tgs, out_path):
     for i in range(len(batch['names'])):
 
         ## extract information from dicts
@@ -29,14 +30,14 @@ def write_predictions(batch):
         start = batch['starts'][i]
 
         ## smooth predicted labels based on minimum duration
-        preds = smooth_preds(preds, min_frame_length = args.min_frame_length)
+        preds = smooth_preds(preds, min_frame_length = min_frame_length)
         audio_duration = librosa.get_duration(y = audio, sr = 16000)
         intervals = convert_to_intervals(preds, audio_duration)
         interval_dict = make_interval_dict(intervals, name)
         interval_dict = correct_window_offsets(interval_dict, left_window, start)
 
-        if args.save_tgs:
-            pred_path = args.out_path.joinpath("preds")
+        if save_tgs:
+            pred_path = out_path.joinpath("preds")
             pred_path.mkdir(parents = True, exist_ok = True)
 
             wav_out = pred_path.joinpath(name).with_suffix(".wav")
@@ -191,7 +192,14 @@ if __name__ == "__main__":
 
     print(f"Writing predictions to file (num_jobs = {args.num_jobs})")
     with Pool(args.num_jobs) as pool:
-        predicted_intervals = list(tqdm(pool.imap_unordered(write_predictions, predictions), total = len(predictions)))
+        predicted_intervals = list(tqdm(pool.starmap(
+            write_predictions,
+            zip(
+                predictions,
+                repeat(args.min_frame_length),
+                repeat(args.save_tgs),
+                repeat(args.out_path)
+            )), total = len(predictions)))
 
     predicted_df_path = args.out_path.joinpath("predictions").with_suffix(".csv")
     print(f"Writing predictions to {str(predicted_df_path)}")
