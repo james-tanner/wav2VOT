@@ -1,3 +1,4 @@
+accelerate>=0.26.0
 audiofile==1.5.1
 comet_ml==3.49.10
 datasets==3.5.0
