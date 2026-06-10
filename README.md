@@ -63,3 +63,36 @@ Once the corpus has been formatted, you can now run `scripts/vot_predict.py` whi
 - `__device`: whether to use CPU or GPU for running prediction (defauly = `cpu`)
 - `__save_tgs`: whether to create TextGrids for the stop predictions (default = `False`)
 - `__save_plots`: whether to create spectrogram images for the stop predictions (default = `False`)
+
+For example:
+```
+python -m scripts.vot_predict /path/to/output /path/to/model/weights.pth /path/to/preds --device="cpu"
+```
+
+will generate a `predictions.csv` file containing the {VOT, closure duration, lenition} predictions for each stop (without saving TextGrids or spectrogram plots).
+
+### Training/Finetuning
+This section explains how to train or finetune a _wav2VOT_ model with a set of annotated {VOT, closure duration, lenition}. As with prediction, _wav2VOT_ assumes that there exists a directory containing the speech audio files, as well as a CSV metadata. For finetuning, the annotations should exist in the metadata as start/end columns (and binary 0/1 lenition labels if provided, where `0` indicates _non-lenition_ (i.e. the presence of a burst):
+```
+stopID,stopFile,stopStart,stopEnd,closure_start,lenition
+"S07M0833_00611138345L","S07M0833",0.033,0.0687299999999441,0.102740000000024,0
+"S07M0833_00615850788L","S07M0833",,0.0360579999999727,0.0551160000000591,1
+"S07M0833_00616379657L","S07M0833",0.04,0.0570149999999012,0.0792659999999978,0
+"S07M0833_00616777889L","S07M0833",,0.0273429999999826,0.0446849999999677,1
+"S07M0833_00617599551L","S07M0833",0.035,0.0454720000000498,0.0775400000000309,0
+"S07M0833_00618039568L","S07M0833",0.023,0.0960839999999944,0.122251999999979,0
+"S07M0833_00619502161L","S07M0833",0.028,0.0666029999999664,0.10673399999994,0
+```
+
+Once processed, the data can be used to finetune a new _wav2VOT_ model using `scripts/vot_train.py`. This script takes the following command-line arguments:
+- path to the data to be predicted (`/path/to/output`)
+- path to write model checkpoints (`/path/to/checkpoints`)
+- `__base_model`: path to a pretrained _wav2VOT_ model checkpoint (default = `None`. If not provided, a _wav2VOT_ model with random weights will be initialised)
+- `__test_size`: amount of data to be used as test set (as a fraction, default = `0.2`)
+- `__batch_size`: size of batches used in training and testing (default = `64`, reduce for a smaller memory footprint)
+- `__num_epochs`: number of training epochs (default = `10`)
+- `__eval_steps`: number of steps between testing loop (default = `200`)
+- `__save_steps`: number of stops between saving model checkpoints (default = `200`)
+- `__use_cpu`: whether to use CPU or GPU for model training (default = `False`)
+
+Further training options can be found by using the `--help/-h` flag.
