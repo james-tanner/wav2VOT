@@ -1,8 +1,6 @@
 # wav2VOT
 <p float="left">
-<img width="300" alt="A01M0007_00726113327L" src="https://github.com/user-attachments/assets/2a6e81b8-af0c-4322-85d8-03aaa53816e8" />
-<img width="300" alt="S01F0050_00077903300L" src="https://github.com/user-attachments/assets/1bc642cd-7670-408f-8b4c-229134458052" />
-<img width="300" alt="A01M0103_00535639711L" src="https://github.com/user-attachments/assets/718b527d-de74-4521-af32-6e6b1493f982" />
+<img width="3600" alt="specs_combined" src="https://github.com/user-attachments/assets/90ce4d67-089f-45df-ae44-e996f92c46df" />
 </p>
 
 _wav2VOT_ is a software tool for the automatic estimation of voice onset time (VOT), closure duration, and stop lenition using the wav2vec2 architecture, as reported in Tanner _et al_ (accepted).
