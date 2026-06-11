@@ -100,3 +100,7 @@ Once processed, the data can be used to finetune a new _wav2VOT_ model using `sc
 - `__use_cpu`: whether to use CPU or GPU for model training (default = `False`)
 
 Further training options can be found by using the `--help/-h` flag.
+
+## Citation
+Please cite this software as follows:
+> Tanner. J., Sonderegger, M., Stuart-Smith, J., Kendall, T., Mielke, J. (accepted). 'wav2VOT: automatic estimation of voice onset time, closure duration, and burst realisation with wav2vec2`. Proceedings of Interspeech 2026.
