@@ -75,9 +75,9 @@ python -m scripts.prepare_wavs_textgrid /path/to/corpus/ "^[ptkbdgPTKBDG]$" /pat
 ```
 
 #### Running prediction
-Once the corpus has been formatted, you can now run `scripts/vot_predict.py` which will run the prediction. Pretrained _wav2VOT_ models can be downloaded from [TODO]. `vot_predict.py` takes the following core command-line arguments:
+Once the corpus has been formatted, you can now run `scripts/vot_predict.py` which will run the prediction. Pretrained _wav2VOT_ models can be downloaded from [the OSF repository](https://doi.org/10.17605/OSF.IO/JQU84). `vot_predict.py` takes the following core command-line arguments:
 - path to the data to be predicted (`/path/to/output`)
-- path to a pretrained _wav2VOT_ model (`/path/to/model/weights.pth`)
+- path to a pretrained _wav2VOT_ model (`/path/to/model/`)
 - path to write predictions (`/path/to/preds`)
 - `__device`: whether to use CPU or GPU for running prediction (defauly = `cpu`)
 - `__save_tgs`: whether to create TextGrids for the stop predictions (default = `False`)
@@ -85,7 +85,7 @@ Once the corpus has been formatted, you can now run `scripts/vot_predict.py` whi
 
 For example:
 ```
-python -m scripts.vot_predict /path/to/output /path/to/model/weights.pth /path/to/preds --device="cpu"
+python -m scripts.vot_predict /path/to/output /path/to/model/ /path/to/preds --device="cpu"
 ```
 
 will generate a `predictions.csv` file containing the {VOT, closure duration, lenition} predictions for each stop (without saving TextGrids or spectrogram plots).
@@ -106,7 +106,7 @@ stopID,stopFile,stopStart,stopEnd,closure_start,lenition
 Once processed, the data can be used to finetune a new _wav2VOT_ model using `scripts/vot_train.py`. This script takes the following command-line arguments:
 - path to the data to be predicted (`/path/to/output`)
 - path to write model checkpoints (`/path/to/checkpoints`)
-- `__base_model`: path to a pretrained _wav2VOT_ model checkpoint (default = `None`. If not provided, a _wav2VOT_ model with random weights will be initialised)
+- `__base_model`: path to a pretrained _wav2VOT_ model checkpoint (default = `None`. If not provided, a _wav2VOT_ model with random weights will be initialised). Provide path to a pretrained model if you wish to _finetune_ it to your data.
 - `__test_size`: amount of data to be used as test set (as a fraction, default = `0.2`)
 - `__batch_size`: size of batches used in training and testing (default = `64`, reduce for a smaller memory footprint)
 - `__num_epochs`: number of training epochs (default = `10`)
