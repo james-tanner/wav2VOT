@@ -31,6 +31,7 @@ pip install -r requirements.txt
 _wav2VOT_ has two primary uses: the _prediction_ of {VOT, closure duration, lenition} for a speech corpus, or the _finetraining_ of a wav2VOT model given some annotated data.
 
 ### Prediction
+#### via CSV (recommended)
 To predict stop information for a speech corpus, _wav2VOT_ assumes you have:
 1. a directory containing the speech data; and
 2. a CSV file containing columns for the filenames, a unique ID for each stop token, and the start/boundaries for the stop tokens in question (i.e. force-aligned boundaries), e.g.
@@ -60,6 +61,20 @@ For the corpus data as above, this would called as the following (run from the b
 python -m scripts.prepare_wavs /path/to/stops.csv /path/to/corpus/wavs/ /path/to/output --wav_label=stop_file --obs_label=stopID --phone_start=stopStart --phone_end=stopEnd
 ```
 
+#### via TextGrids (experimental)
+If your data instead exists in Praat TextGrid format without any corresponding CSV of stop timestamps, you can use `scripts/prepare_wavs_textgrid.py` to prepare your data for prediction. This script has the following command-line arguments:
+- path to the corpus of wav-TextGrid pairs (`/path/to/corpus/`)
+- regular-expression of labels to extract (e.g. `^[ptkbdgPTKBDG]$`)
+- path for the formatted dataset to be written to (`/path/to/output`)
+- `__tiername`: the name of the TextGrid tier to search for labels (default: `phones`)
+- the same `window_[min/max]` as above
+
+And would be called e.g.
+```
+python -m scripts.prepare_wavs_textgrid /path/to/corpus/ "^[ptkbdgPTKBDG]$" /path/to/output --tiername-phones
+```
+
+#### Running prediction
 Once the corpus has been formatted, you can now run `scripts/vot_predict.py` which will run the prediction. Pretrained _wav2VOT_ models can be downloaded from [TODO]. `vot_predict.py` takes the following core command-line arguments:
 - path to the data to be predicted (`/path/to/output`)
 - path to a pretrained _wav2VOT_ model (`/path/to/model/weights.pth`)
