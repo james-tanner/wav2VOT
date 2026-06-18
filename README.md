@@ -18,7 +18,7 @@ conda activate w2vot
 
 2. Clone the `wav2VOT` repository
 ```
-git clone git clone https://github.com/james-tanner/wav2VOT.git
+git clone https://github.com/james-tanner/wav2VOT.git
 cd wav2VOT
 ```
 
@@ -71,7 +71,7 @@ If your data instead exists in Praat TextGrid format without any corresponding C
 
 And would be called e.g.
 ```
-python -m scripts.prepare_wavs_textgrid /path/to/corpus/ "^[ptkbdgPTKBDG]$" /path/to/output --tiername-phones
+python -m scripts.prepare_wavs_textgrid /path/to/corpus/ "^[ptkbdgPTKBDG]$" /path/to/output --tiername=phones
 ```
 
 #### Running prediction
