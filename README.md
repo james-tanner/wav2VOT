@@ -5,6 +5,8 @@
 
 _wav2VOT_ is a software tool for the automatic estimation of voice onset time (VOT), closure duration, and stop lenition using the wav2vec2 architecture, as reported in Tanner _et al_ (accepted).
 
+Preprint available [here](https://eprints.gla.ac.uk/388172/2/388172.pdf).
+
 ## Installation 
 
 Usage of a package manager such as `conda` or `virtualenv` is highly recommended.
@@ -79,7 +81,7 @@ Once the corpus has been formatted, you can now run `scripts/vot_predict.py` whi
 - path to the data to be predicted (`/path/to/output`)
 - path to a pretrained _wav2VOT_ model (`/path/to/model/`)
 - path to write predictions (`/path/to/preds`)
-- `__device`: whether to use CPU or GPU for running prediction (defauly = `cpu`)
+- `__device`: whether to use CPU or GPU for running prediction (default = `cpu`)
 - `__save_tgs`: whether to create TextGrids for the stop predictions (default = `False`)
 - `__save_plots`: whether to create spectrogram images for the stop predictions (default = `False`)
 
@@ -118,4 +120,4 @@ Further training options can be found by using the `--help/-h` flag.
 
 ## Citation
 Please cite this software as follows:
-> Tanner. J., Sonderegger, M., Stuart-Smith, J., Kendall, T., Mielke, J. (accepted). 'wav2VOT: automatic estimation of voice onset time, closure duration, and burst realisation with wav2vec2`. Proceedings of Interspeech 2026.
+> Tanner. J., Sonderegger, M., Stuart-Smith, J., Kendall, T., Mielke, J. (accepted). 'wav2VOT: automatic estimation of voice onset time, closure duration, and burst realisation with wav2vec2`. Proceedings of Interspeech 2026. [Link](https://eprints.gla.ac.uk/388172/2/388172.pdf)
