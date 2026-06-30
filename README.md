@@ -5,7 +5,7 @@
 
 _wav2VOT_ is a software tool for the automatic estimation of voice onset time (VOT), closure duration, and stop lenition using the wav2vec2 architecture, as reported in Tanner _et al_ (accepted).
 
-Preprint available [here](https://eprints.gla.ac.uk/388172/2/388172.pdf).
+Preprint available [here](https://doi.org/10.48550/arXiv.2606.28857).
 
 ## Installation 
 
@@ -120,4 +120,4 @@ Further training options can be found by using the `--help/-h` flag.
 
 ## Citation
 Please cite this software as follows:
-> Tanner. J., Sonderegger, M., Stuart-Smith, J., Kendall, T., Mielke, J. (accepted). 'wav2VOT: automatic estimation of voice onset time, closure duration, and burst realisation with wav2vec2`. Proceedings of Interspeech 2026. [Link](https://eprints.gla.ac.uk/388172/2/388172.pdf)
+> Tanner. J., Sonderegger, M., Stuart-Smith, J., Kendall, T., Mielke, J. (accepted). 'wav2VOT: automatic estimation of voice onset time, closure duration, and burst realisation with wav2vec2`. Proceedings of Interspeech 2026. [Preprint](https://doi.org/10.48550/arXiv.2606.28857)
