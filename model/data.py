@@ -44,7 +44,8 @@ class Wav2VOTDataset(Dataset):
 
         ## get index of first closure frame if present
         if "closure_start" in data_row.columns:
-            closure_start_idx = int(data_row['closure_start'].iloc[0] / stride)
+            if not np.isnan(data_row['closure_start'].iloc[0]):
+                closure_start_idx = int(data_row['closure_start'].iloc[0] / stride)
 
         ## get the VOT start/end indexes
         vot_start_idx = int(data_row['vot_start'].iloc[0] / stride)
@@ -52,7 +53,8 @@ class Wav2VOTDataset(Dataset):
 
         ## fill frames between closure start and VOT start
         if "closure_start" in data_row.columns:
-            labels[closure_start_idx:vot_start_idx] = label_map['closure']
+            if not np.isnan(data_row['closure_start'].iloc[0]):
+                labels[closure_start_idx:vot_start_idx] = label_map['closure']
 
         ## fill VOT frames with VOT label
         labels[vot_start_idx:vot_end_idx] = label_map['vot']
