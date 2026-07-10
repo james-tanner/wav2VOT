@@ -235,6 +235,10 @@ def make_interval_dict(intervals, filename):
 
             else:
                 raise ValueError(f"Label {interval['label']} is not a valid label")
+
+    ## finally get label sequence
+    interval_dict['sequence'] = " ".join([i['label'][0] for i in intervals if i['label'] != ""])
+
     return interval_dict
 
 def correct_window_offsets(interval_dict, window, start):
