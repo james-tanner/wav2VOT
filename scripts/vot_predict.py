@@ -133,6 +133,10 @@ if __name__ == "__main__":
     parser.add_argument("--clean", action = "store_true", help = "Clean model output directory (default: False)")
     args = parser.parse_args()
 
+    if args.device == "cpu":
+        import torch
+        torch.backends.nnpack.set_flags(False)
+
     ## set device
     device = torch.device(args.device)
 
