@@ -29,6 +29,9 @@ cd wav2VOT
 pip install -r requirements.txt
 ```
 
+## Tutorial
+A basic usage tutorial can be found in the [examples](https://github.com/james-tanner/wav2VOT/tree/main/examples) directory.
+
 ## Usage
 _wav2VOT_ has two primary uses: the _prediction_ of {VOT, closure duration, lenition} for a speech corpus, or the _finetraining_ of a wav2VOT model given some annotated data.
 
