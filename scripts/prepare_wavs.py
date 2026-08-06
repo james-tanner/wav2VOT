@@ -21,14 +21,12 @@ def make_subdirs(indir):
 
     return None
 
-def get_wav_from_corpus(corpus, wav_name):
+def get_wav_from_corpus(wav_name):
     '''
     Create parselmouth object from given
     audio path
     '''
-    wav_fpath = corpus.joinpath(wav_name)
-    wav_fpath = str(wav_fpath)
-    return parselmouth.Sound(wav_fpath)
+    return parselmouth.Sound(str(wav_name))
 
 def resample_wav(wav_fpath, sr):
     '''
@@ -50,13 +48,13 @@ def make_wav_clips(wav, wav_label, corpus_dir, out_dir, start, end, lmin, lmax, 
     ## get discourse and speaker names as strings
     talkid_name = wav[wav_label].unique()[0]
     try:
-        wav_path = list(corpus_dir.rglob(f"*{talkid_name}*.[Ww][Aa][Vv]"))[0]
+        wav_path = list(corpus_dir.rglob(f"*{talkid_name}*.[Ww][Aa][Vv]"))[0].resolve()
     except IndexError:
         print(f"Could not find {corpus_dir.joinpath(talkid_name)}")
         return None
 
     ## get the WAV from the corpus and read as a Parselmouth Praat object
-    wav_file = get_wav_from_corpus(corpus_dir, wav_path)
+    wav_file = get_wav_from_corpus(wav_path)
 
     wav_dict = []
     ## go through the dataset and extract
