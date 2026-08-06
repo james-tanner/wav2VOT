@@ -1,0 +1,9 @@
+speaker,discourse,phone_id,word,syllable_label,phone_label,phone_begin,phone_end
+LJ,LJ025-0076,33e505ca-91a1-11f1-b5de-bc2411924b5d,devoid,D.IH0.V,D,6.08,6.17
+LJ,LJ037-0171,33c9155e-91a1-11f1-b5de-bc2411924b5d,enabled,B.AH0.L.D,B,3.23,3.31
+LJ,LJ025-0076,33e50688-91a1-11f1-b5de-bc2411924b5d,devoid,OY1.D,D,6.55,6.61
+LJ,LJ025-0076,33e50188-91a1-11f1-b5de-bc2411924b5d,parasitically,T.IH0.K,T,3.82,3.91
+LJ,LJ025-0076,33e509bc-91a1-11f1-b5de-bc2411924b5d,cavity,K.AE1.V,K,7.63,7.75
+LJ,LJ037-0171,33c9189c-91a1-11f1-b5de-bc2411924b5d,conclude,K.AH0.N.K,K,4.18,4.3
+LJ,LJ037-0171,33c9166c-91a1-11f1-b5de-bc2411924b5d,commission,K.AH0,K,3.53,3.65
+LJ,LJ025-0076,33e50a7a-91a1-11f1-b5de-bc2411924b5d,cavity,T.IY0,T,7.98,8.07
