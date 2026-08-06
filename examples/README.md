@@ -133,3 +133,20 @@ ls examples/LJ-predictions/preds
 33e50188-91a1-11f1-b5de-bc2411924b5d.TextGrid  33e50a7a-91a1-11f1-b5de-bc2411924b5d.TextGrid
 33e50188-91a1-11f1-b5de-bc2411924b5d.wav       33e50a7a-91a1-11f1-b5de-bc2411924b5d.wav
 ```
+Alternatively, by using `--save_plots` when running the prediction script, we will receive a `plots` directory containing spectrograms annotated with the predictions
+```
+ls examples/LJ-predictions/plots
+
+33c9155e-91a1-11f1-b5de-bc2411924b5d.pdf  33e50188-91a1-11f1-b5de-bc2411924b5d.pdf  33e509bc-91a1-11f1-b5de-bc2411924b5d.pdf
+33c9166c-91a1-11f1-b5de-bc2411924b5d.pdf  33e505ca-91a1-11f1-b5de-bc2411924b5d.pdf  33e50a7a-91a1-11f1-b5de-bc2411924b5d.pdf
+33c9189c-91a1-11f1-b5de-bc2411924b5d.pdf  33e50688-91a1-11f1-b5de-bc2411924b5d.pdf
+```
+
+Below are a few example spectrograms of the LJ data overlaid with wav2VOT predictions:
+
+<img width="900" alt="33e505ca-91a1-11f1-b5de-bc2411924b5d" src="https://github.com/user-attachments/assets/5c991e92-02f6-46c3-baf3-daec631df64c" />
+
+<img width="900" alt="33e50a7a-91a1-11f1-b5de-bc2411924b5d" src="https://github.com/user-attachments/assets/cc987084-c62a-4a6e-b5c6-d3e685ce5741" />
+
+
+
