@@ -3,7 +3,7 @@
 <img width="3600" alt="specs_combined" src="https://github.com/user-attachments/assets/90ce4d67-089f-45df-ae44-e996f92c46df" />
 </p>
 
-_wav2VOT_ is a software tool for the automatic estimation of voice onset time (VOT), closure duration, and stop lenition using the wav2vec2 architecture, as reported in Tanner _et al_ (accepted).
+_wav2VOT_ is a software tool for the automatic estimation of voice onset time (VOT), closure duration, and stop lenition using the wav2vec2 architecture, as reported in Tanner _et al_ (2026).
 
 Paper available [here](https://www.isca-archive.org/interspeech_2026/tanner26_interspeech.html).
 
